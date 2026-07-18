@@ -22,7 +22,7 @@ const preguntas = [
 
     {
         nombre:"🎬 Opción 1 - Ida al cine",
-        video:"img/Cinev.mp4",
+        video:"img/CineV.mp4",
         descripcion:"¿Una peli para comenzar? 🍿"
     },
 

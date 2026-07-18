@@ -26,11 +26,10 @@ body{
     );
 }
 
-@media(max-width:768px){
 .card{
 
-    width:min(90%,650px);
-    padding:30px;
+    width: 500px;
+    padding: 45px;
     background:
     linear-gradient(
         145deg,
@@ -52,7 +51,6 @@ body{
 
     inset 0 0 1px rgba(255,255,255,.2);
 
-}
 }
 
 .card::before{
@@ -553,53 +551,5 @@ button{
         transform:scale(.96);
 
     }
-
-}
-
-#btnAtras{
-
-    position:absolute;
-
-    top:25px;
-
-    left:25px;
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    border:none;
-
-    background:rgba(255,255,255,.06);
-
-    color:#ff5a8c;
-
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    transition:.3s;
-
-}
-
-#btnAtras:hover{
-
-    transform:translateX(-4px);
-
-    background:rgba(255,90,140,.18);
-
-}
-
-#btnAtras.oculto{
-
-    opacity:0;
-
-    pointer-events:none;
 
 }
