@@ -26,10 +26,11 @@ body{
     );
 }
 
+@media(max-width:768px){
 .card{
 
-    width: 500px;
-    padding: 45px;
+    width:min(90%,650px);
+    padding:30px;
     background:
     linear-gradient(
         145deg,
@@ -51,6 +52,7 @@ body{
 
     inset 0 0 1px rgba(255,255,255,.2);
 
+}
 }
 
 .card::before{
