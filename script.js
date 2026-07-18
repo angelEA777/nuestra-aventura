@@ -6,7 +6,7 @@ let horaElegida = "";
 const preguntas = [
 
 {
-    titulo:"Esto solo se desbloquea con tu nombre ❤️",
+    titulo:"Esto solo se desbloquea con tu último nombre ❤️",
     texto:"",
     tipo:"nombre"
 },
@@ -101,6 +101,18 @@ function mostrarPregunta(){
 
     titulo.innerHTML = preguntas[paso].titulo;
     texto.innerText = preguntas[paso].texto;
+
+    const btnAtras = document.getElementById("btnAtras");
+
+    if(paso === 0){
+
+        btnAtras.classList.add("oculto");
+
+    }else{
+
+        btnAtras.classList.remove("oculto");
+
+    }
 
     contenido.innerHTML = "";
 
@@ -235,14 +247,6 @@ function mostrarPregunta(){
                 Reír mucho.
             </p>
 
-            <p>
-                Dejar el celular por un ratito.
-            </p>
-
-            <p>
-                Y crear un bonito recuerdo juntos. ❤️
-            </p>
-
         </div>
 
         <button onclick="aceptarPromesa()">
@@ -271,6 +275,18 @@ function mostrarPregunta(){
 }
 
 let dateSeleccionado = null;
+
+function anterior(){
+
+    if(paso > 0){
+
+        paso--;
+
+        mostrarPregunta();
+
+    }
+
+}
 
 function abrirDate(indice){
 
@@ -423,14 +439,7 @@ function mostrarFinal(){
 
     document.getElementById("texto").innerHTML =
 
-    `La aventura de hoy acaba de comenzar.
-
-    <br><br>
-
-    ✓ Pasarla bien<br>
-    ✓ Reír mucho<br>
-    ✓ Crear un bonito recuerdo<br>
-    □ Descubrir la sorpresa final 👀`;
+    `La aventura está por comenzar.`;
 
     document.getElementById("contenido").innerHTML =
 
