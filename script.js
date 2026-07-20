@@ -2,6 +2,7 @@ let paso = 0;
 let planElegido = "";
 let fechaElegida = "";
 let horaElegida = "";
+const musica = document.getElementById("musica");
 
 const preguntas = [
 
@@ -64,7 +65,7 @@ const preguntas = [
 },
 
 {
-    titulo:"Solo un último detalle ❤️",
+    titulo:"Un detalle más❤️",
     texto:"Necesito confirmar cuándo será nuestra misión.",
 
     tipo:"agenda"
@@ -78,7 +79,14 @@ const preguntas = [
 },
 
 {
-    titulo:"Bueno sin más que agregar, espero no haya brisa ese día.",
+    titulo:"Buenooo con esto claro",
+    texto:"Brisa arreglate ponte bonita, que está noche yo voy a verte y avisale a tus pretendientes.",
+
+    tipo:"foto"
+},
+
+{
+    titulo:"Ojitos lindos espero no haya brisa ese día.",
 
     texto:`🤍`,
 
@@ -171,6 +179,35 @@ function mostrarPregunta(){
     });
     }
 
+    else if(preguntas[paso].tipo === "foto"){
+
+    musica.currentTime = 0;
+
+    musica.play().catch(()=>{
+        console.log("El navegador bloqueó el audio");
+    });
+
+    contenido.innerHTML = `
+
+        <div class="foto-container">
+
+            <img
+                src="img/brisa.jpeg"
+                class="foto-brisa"
+                alt="Brisa">
+
+        </div>
+
+        <button onclick="siguiente()">
+            Continuar ❤️
+        </button>
+
+    `;
+
+    musica.currentTime = 5;   // 1 minuto con 15 segundos
+    musica.play();
+
+    }
     else if(preguntas[paso].tipo==="agenda"){
 
     contenido.innerHTML = `
@@ -239,21 +276,13 @@ function mostrarPregunta(){
 
         <div class="promesa-texto">
 
-            <p>
-                Prometamos disfrutar este momento.
-            </p>
-
-            <p>
-                Reír mucho.
-            </p>
-
         </div>
 
-        <button onclick="aceptarPromesa()">
+        <button onclick="guardarDatos()">
 
-            🤝 Lo prometo
+            Yo tampoco 🤍
 
-        </button>
+        </button> 
 
     `;
 
@@ -271,6 +300,13 @@ function mostrarPregunta(){
         });
 
     }
+
+    if(preguntas[paso].tipo !== "foto"){
+
+    musica.pause();
+    musica.currentTime = 0;
+
+}
 
 }
 
@@ -448,6 +484,30 @@ function mostrarFinal(){
     </button>`;
 }
 
+function guardarDatos(){
+
+    fetch("https://script.google.com/macros/s/AKfycbx3lOX02KyVQD36qxXxqrHfhtqrji_kXr1-kHlu0OOuCNDH242TWCrD_BVSwORGEQ0L3A/exec",{
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            nombre:"Brisa",
+
+            plan:planElegido,
+
+            fecha:fechaElegida,
+
+            hora:horaElegida
+
+        })
+
+    });
+
+    aceptarPromesa();
+
+}
+
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -498,6 +558,8 @@ function drawMatrix(){
 setInterval(drawMatrix,40);
 
 function aceptarPromesa(){
+
+    document.getElementById("btnAtras").style.display = "none";
 
     document.querySelector(".card").classList.add("despedida");
 
